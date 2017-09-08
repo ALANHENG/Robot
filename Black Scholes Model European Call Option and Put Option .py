@@ -34,7 +34,6 @@ def BS_Call_Value():
     #Calculate the d1 
     d1 = (log(S/K ,exp(1)) + ((r - D + (0.5*(sigma**2)))*(T-t))) / (sigma*sqrt(T-t))
     print("d1 =",d1)
-    
     #Calculate the d2
     d2 = d1 - (sigma*sqrt(T-t))
     print("d2 =",d2)
@@ -42,7 +41,6 @@ def BS_Call_Value():
     #Compute the probability of cumulative standard normal distribution in d1 and d2
     Nd1 = stats.norm.cdf(d1, 0.0 ,1.0)
     print("N(d1) =",Nd1)
-    
     Nd2 = stats.norm.cdf(d2, 0.0 ,1.0)
     print("N(d2) =",Nd2)
     
@@ -50,7 +48,7 @@ def BS_Call_Value():
     return call_value 
 
 European_Call_Option = BS_Call_Value()
-print(European_Call_Option)
+print("Theoretical value of European_Call_Option =",European_Call_Option)
 
 def BS_Put_Value():
     """ 
@@ -70,13 +68,11 @@ def BS_Put_Value():
    
     d1 = (log(S/K ,exp(1)) + ((r - D + (0.5*(sigma**2)))*(T-t))) / (sigma*sqrt(T-t))
     print("d1 =",d1)
-    
     d2 = d1 - (sigma*sqrt(T-t))
     print("d2=",d2)
     
     N_d1 = stats.norm.cdf(-d1, 0.0 ,1.0)
     print("N(-d1) =",N_d1)
-    
     N_d2 = stats.norm.cdf(-d2, 0.0 ,1.0)
     print("N(-d2) =",N_d2)
     
@@ -84,7 +80,7 @@ def BS_Put_Value():
     return Put_value
 
 European_Put_Option = BS_Put_Value()
-print(European_Put_Option)
+print("Theoretical value of European_Put_Option =",European_Put_Option)
 
 ###################
 #Put Call Parity under Black Scholes Model
