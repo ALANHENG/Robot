@@ -2,18 +2,18 @@
 """
 Created on Fri Sep  8 17:22:01 2017
 
-@author: Alan
+@author: Alan Heng Hua Tat
 """
 
 #Black Scholes Model
 ###############
-S = float(68.93)
-K = float(67.5)
-r = float(0.10)
-T = float(1.5)
-t = float(0.0) 
-D = float(0.0226) 
-sigma = float(0.23)
+S = float()
+K = float()
+r = float()
+T = float()
+t = float() 
+D = float() 
+sigma = float()
 
 def BS_Call_Value():
     """ 
@@ -30,12 +30,16 @@ def BS_Call_Value():
     
     from math import exp,log,sqrt 
     from scipy import stats
-
+    
+    #Calculate the d1 
     d1 = (log(S/K ,exp(1)) + ((r - D + (0.5*(sigma**2)))*(T-t))) / (sigma*sqrt(T-t))
     print("d1 =",d1)
+    
+    #Calculate the d2
     d2 = d1 - (sigma*sqrt(T-t))
     print("d2 =",d2)
     
+    #Compute the probability of cumulative standard normal distribution in d1 and d2
     Nd1 = stats.norm.cdf(d1, 0.0 ,1.0)
     print("N(d1) =",Nd1)
     
@@ -83,11 +87,15 @@ European_Put_Option = BS_Put_Value()
 print(European_Put_Option)
 
 ###################
-#Put Call Parity in Black Scholes Model
+#Put Call Parity under Black Scholes Model
 ################### 
 Put_Call_Parity = round(European_Call_Option - European_Put_Option,2)
 print("Put Call Parity =",Put_Call_Parity)
 
+###################
+#Put Call Parity, proof C-P = PV(S-K)
+#PV(S) = S*exp(-dividend yield*(T-t))
+#PV(K) = K*exp(-risk-free rate*(T-t))
 def P_C_Parity():
     
      from math import exp
