@@ -61,7 +61,7 @@ def BSM_Option_Greek():
     print("Vega_Put =",Vega_Call_Put)
     
     Theta_Put = (r*K*exp(-r*(T-t))*N_d2) - (S*D*exp(-D*(T-t))*N_d1) 
-    - ((S*exp(-D*(T-t))*sigma)/(2*sqrt(T-t)))
+    - ((S*exp(-D*(T-t))*Sd1*sigma)/(2*sqrt(T-t)))
     print("Theta_Put =",Theta_Put)
     
     Rho_Put = -(T-t)*K*exp(-r*(T-t))*N_d2
