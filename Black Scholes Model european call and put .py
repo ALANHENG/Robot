@@ -52,7 +52,7 @@ def BS_Put_Value():
     print("d1 =",d1)
     
     d2 = d1 - (sigma*sqrt(T-t))
-    print("d2=",d2)
+    print("d2 =",d2)
     
     N_d1 = stats.norm.cdf(-d1, 0.0 ,1.0)
     print("N(-d1) =",N_d1)
